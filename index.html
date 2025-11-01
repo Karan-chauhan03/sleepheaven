@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sleep Heaven | Peaceful Sleep</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+:root{
+  --lavender:#C8A2C8;--midnight:#1E2A47;--soft-cream:#FAF9F6;--sage:#A8BCA1;--muted:#6b6b74;
+}
+*{box-sizing:border-box}
+/* Enhanced smooth scrolling for all devices */
+html, body {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* makes momentum scroll feel natural on iOS */
+  overscroll-behavior: none; /* avoids rubber-band bounce on some browsers */
+}
+
+body{
+  margin:0;font-size:17px;font-family:"Open Sans",sans-serif;color:var(--midnight);
+  background:linear-gradient(180deg,#fbfafc 0%,#f6f2f8 25%,#f3fbf9 65%);
+  -webkit-font-smoothing:antialiased;line-height:1.5;
+}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 15% 20%,rgba(37, 2, 37, 0.12),transparent 18%),radial-gradient(circle at 85% 80%,rgba(168,188,161,0.05),transparent 18%);
+}
+header{
+   position:sticky;top:0;z-index:50;backdrop-filter:blur(6px);                            
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 28px;border-bottom:1px solid rgba(30,42,71,0.06);
+  background:linear-gradient(180deg,rgba(255,255,255,0.42),rgba(255,255,255,0.28));
+  box-shadow:0 6px 18px rgba(30,42,71,0.03);
+}
+.brand-wrap{display:flex;align-items:center;gap:12px}
+.moon-icon{
+  width:44px;height:44px;display:inline-grid;place-items:center;
+  background:linear-gradient(135deg,var(--lavender),#d3e7e2 80%);
+  border-radius:12px;box-shadow:0 6px 18px rgba(30,42,71,0.06);
+}
+.brand{font-family:"Lora",serif;font-weight:700;color:var(--midnight);font-size:1.05rem}
+.nav{display:flex;gap:18px;margin-left:auto}
+.nav a{text-decoration:none;color:var(--midnight);font-weight:600;font-size:0.95rem}
+.container{max-width:980px;margin:34px auto;width:92%}
+.hero{border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:stretch;
+  background:linear-gradient(135deg,rgba(200,162,200,0.12),rgba(168,188,161,0.07));
+  padding:24px;box-shadow:0 10px 30px rgba(30,42,71,0.05);
+}
+.hero-left{padding:14px 8px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.h-flag{font-family:"Lora",serif;color:var(--midnight);font-weight:700}
+.hero-title{font-family:"Lora",serif;font-size:2.1rem;margin:6px 0;line-height:1.05}
+.hero-sub{color:var(--muted);font-size:1rem;margin-bottom:14px;max-width:52ch}
+.hero-right{display:flex;align-items:center;justify-content:center}
+.hero-images{width:100%;height:100%;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hero-images img{width:100%;height:100%;object-fit:cover;border-radius:10px;box-shadow:0 8px 24px rgba(30,42,71,0.06);transition:transform .6s cubic-bezier(.2,.9,.3,1)}
+.hero-images img:hover{transform:translateY(-6px) scale(1.01)}
+.content{margin-top:22px;background:#fff;border-radius:14px;padding:26px;box-shadow:0 10px 30px rgba(30,42,71,0.04)}
+.content h2{font-family:"Lora",serif;font-size:1.45rem;margin:0 0 12px}
+.content p{color:var(--muted)}
+.content img{width:100%;border-radius:10px;margin:16px 0;box-shadow:0 10px 28px rgba(30,42,71,0.05)}
+.related-posts{margin-top:28px;padding-top:22px;border-top:1px solid rgba(30,42,71,0.04)}
+.related-list{display:flex;gap:14px;flex-wrap:wrap}
+.related-item{width:170px;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#fff,rgba(240,240,245,0.9));transition:transform .22s ease,box-shadow .22s ease;cursor:pointer}
+.related-item:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(30,42,71,0.06)}
+.related-item img{width:100%;height:110px;object-fit:cover}
+.related-item span{padding:8px 10px;display:block;font-weight:600;color:var(--midnight)}
+footer{margin-top:40px;border-radius:12px;padding:22px;background:linear-gradient(90deg,rgba(30,42,71,0.06),rgba(24,46,65,0.06));text-align:center;font-size:0.95rem}
+.social-icons{display:flex;gap:18px;justify-content:center;margin-bottom:10px}
+.social-icons a{color:var(--midnight);font-size:1.35rem;text-decoration:none}
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.9,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media (max-width:900px){
+  header{padding:10px 14px}
+  .brand{font-size:0.95rem}
+  .hero{grid-template-columns:1fr;padding:18px}
+  .hero-right{order:-1;margin-bottom:10px}
+  .hero-images{grid-template-columns:1fr 1fr}
+  .hero-title{font-size:1.6rem}
+  .hero-sub{font-size:0.95rem}
+  .nav{display:none}
+  .related-item{width:46%}
+}
+@media (max-width:480px){
+  body{font-size:15px}
+  .container{width:95%;margin:20px auto}
+  .hero{padding:14px}
+  .hero-title{font-size:1.35rem}
+  .hero-images{grid-template-columns:1fr 1fr}
+  .related-item{width:100%;max-width:300px}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="brand-wrap">
+    <div class="moon-icon">🌙</div>
+    <div>
+      <div class="brand">Sleep Heaven</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:2px;">Relaxation | Peaceful sleep | Sleep tips</div>
+    </div>
+  </div>
+  <nav class="nav">
+    <a href="#home">Home</a>
+    <a href="#blog">Blog</a>
+    <a href="#products">Products</a>
+    <a href="#routines">Routines</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<main class="container" id="home">
+  <section class="hero reveal" id="hero">
+    <div class="hero-left">
+      <div class="h-flag">Sleep & Recovery · Wellness</div>
+      <h1 class="hero-title">Small, consistent steps to sleep better and recover faster.</h1>
+      <p class="hero-sub">Actionable routines and gentle habits that help you recharge. Calm design meets mindful practice so your mind settles as your body strengthens.</p>
+      <div class="pill">Free guides · No tracking</div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-images">
+        <img src="sleep2.jpg" alt="Moodboard">
+        <img src="sleep.jpg" alt="Homepage">
+        <img src="prodoct.jpg" alt="Hero visuals" style="grid-column:1 / -1;height:150px;object-fit:cover">
+      </div>
+    </div>
+  </section>
+
+  <div id="blog-content" class="content reveal"></div>
+  <div class="related-posts reveal">
+    <h3 style="font-family:'Lora',serif;">Related Posts</h3>
+    <div id="related-list" class="related-list"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="social-icons">
+    <a href="https://www.pinterest.com/reproom06" target="_blank"><i class="fab fa-pinterest"></i></a>
+    <a href="https://youtube.com/@oorbitt-y1w?si=FBoO7FTJhgPetg4b" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+  <div>@sleepheaven relaxation peacefulsleep sleeptips</div>
+</footer>
+
+<script>
+const blogContent = document.getElementById('blog-content');
+const relatedList = document.getElementById('related-list');
+
+const blogs = [
+  {
+    title: "Healthy Eating Tips",
+    image: "https://thumbs.dreamstime.com/b/health-food-fitness-concept-fresh-t-vegetables-pulses-herbs-spices-nuts-grains-high-anthocyanins-antioxidants-102707769.jpg?w=768",
+    thumb: "https://thumbs.dreamstime.com/b/health-food-fitness-concept-fresh-t-vegetables-pulses-herbs-spices-nuts-grains-high-anthocyanins-antioxidants-102707769.jpg?w=200",
+    body: "<h2>Introduction</h2><p>Healthy <h1>KARAN IS HREEEE</h1>eating starts with mindfulness. Instead of restricting yourself, aim to nourish your body and support your energy throughout the day.</p><p>Build balanced meals with colorful vegetables, quality protein, healthy fats, and complex carbs. Drink plenty of water and eat slowly.</p><p>Nutrition and sleep are connected — when you eat well, your body restores better overnight.</p>"
+  },
+  {
+    title: "10 Easy Home Workouts",
+    image: "https://img.freepik.com/free-photo/sporty-beautiful-female-showing-her-well-trained-body_651396-1733.jpg?w=740&q=80",
+    thumb: "https://img.freepik.com/free-photo/sporty-beautiful-female-showing-her-well-trained-body_651396-1733.jpg?w=200&q=60",
+    body: "<h2>Introduction</h2><p>Simple home <h1>KARAN IS HREEEE</h1>workouts that fit into any schedule. No equipment required — just consistency and proper rest.</p><p>Focus on mobility, bodyweight strength, and active recovery. A few mindful minutes a day can reset both your body and your mind.</p>"
+  },
+ {
+    title: "Most Natural Way to Lose Weight",
+    image: "https://placehold.co/800x400/efe6f3/C8A2C8?text=Natural+Weight+Loss",
+    thumb: "data:image/jpeg;base64,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",
+    body: "<h1>KARAN IS HREEEE</h1><h2>Introduction</h2><p>Learn how to lose weight naturally with small, steady lifestyle changes. Sustainable routines always outperform quick fixes.</p><p>Quality sleep, balanced nutrition, and active movement form the foundation of long-term results.</p>"
+  }
+];
+
+function renderBlog(index) {
+  const blog = blogs[index];
+  blogContent.innerHTML = `
+    <div>
+      <h2>${blog.title}</h2>
+      ${blog.image ? `<img src='${blog.image}' alt='${blog.title}'>` : ""}
+      <div>${blog.body}</div>
+    </div>
+  `;
+  renderRelated(index);
+}
+
+function renderRelated(currentIndex) {
+  relatedList.innerHTML = '';
+  blogs.forEach((b, i) => {
+    if (i === currentIndex) return;
+    const div = document.createElement('div');
+    div.className = 'related-item';
+    div.innerHTML = `<img src='${b.thumb}' alt='${b.title}'><span>${b.title}</span>`;
+    div.onclick = () => renderBlog(i);
+    relatedList.appendChild(div);
+  });
+}
+
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((en) => {
+    if (en.isIntersecting) en.target.classList.add('visible');
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach((el) => obs.observe(el));
+
+renderBlog(0);
+
+
+// Smooth scroll on nav click (especially for mobile browsers)
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+
+</script>
+</body>
+</html>
+
